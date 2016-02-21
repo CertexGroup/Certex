@@ -11,11 +11,15 @@ if (Meteor.isClient) {
       {category: "category 2"},
       {category: "category 3"}
     ],
-    certificateTemplate:[
+    certificateTemplates:[
       {title: "title 1"},
       {title: "title 2"},
       {title: "title 3"}
     ]
+  });
+
+  Template.createCertificate.onRendered(function() {
+    $('select').material_select();
   });
 
 }
@@ -25,3 +29,4 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
