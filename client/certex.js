@@ -99,7 +99,13 @@ if (Meteor.isClient) {
       event.preventDefault();
       var searchAuthorizer = event.target.searchAuthorizer.value;
       var searchIndividual = event.target.searchIndividual.value;
-      window.location.assign("/explore/"+searchAuthorizer+"/"+searchIndividual);
+      var url = "/explore/";
+      if (searchAuthorizer == "" || searchIndividual == "") {
+        url += (searchAuthorizer == "") ? searchIndividual : searchAuthorizer;
+      } else {
+        url += searchAuthorizer + "/" + searchIndividual;
+      };
+      window.location.assign(url);
     }
   });
 
