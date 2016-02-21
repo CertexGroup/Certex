@@ -1,3 +1,5 @@
+<body>
+</body>
 
 <template name="createCertificate">
     {{>nav}}
@@ -7,7 +9,12 @@
     <div class="row">
         <form class="new-cert col s12">
             <div class="row">
-              {{> publicKeyInput}}
+              {{#each authority}}
+                {{> publicKeyInput}}
+              {{/each}}
+            </div>
+            <div class="row">
+              {{> privateKeyInput}}
             </div>
             <div class="row">
               <div class="input-field col s12 m6">
@@ -40,6 +47,10 @@
               {{> descriptionInput}}
             </div>
 
+            <div class="row">
+              <button id="createCert" class="btn-large waves-light waves-effect">Create Certificate</button>
+            </div>
+
             {{> floatingButtonCreateCertificate}}
         </form>
     </div>
@@ -48,12 +59,19 @@
 
 <template name="publicKeyInput">
   <div class="input-field col s12 m6">
-      <input disabled type="text" id="publicKeyHost" class="validate" name="publicKeyHost" value="{{publicKeyHost}}" />
+      <input disabled type="text" id="publicKeyHost" class="validate" name="publicKeyHost" value="{{public_key}}" />
       <label for="publicKeyHost" class="active">Your Public Key</label>
   </div>
   <div class="input-field col s12 m6">
       <input type="text" id="publicKeyGuest" class="validate" name="publicKeyGuest" />
       <label for="publicKeyGuest">Public Key to Certify</label>
+  </div>
+</template>
+
+<template name="privateKeyInput">
+  <div class="input-field col s12 m12">
+      <input type="text" id="privateKeyHost" class="validate" name="privateKeyHost" />
+      <label for="privateKeyHost">Private Key to Sign</label>
   </div>
 </template>
 
@@ -64,18 +82,6 @@
 
 <template name="category">
   <option value="{{category}}">{{category}}</option>
-</template>
-
-<template name="fileInput">
-    <div class="file-field input-field">
-      <div class="btn">
-        <span>Upload File</span>
-        <input type="file" name="fileUploaded">
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
-      </div>
-    </div>
 </template>
 
 <template name="dateInput">
@@ -149,10 +155,10 @@
   <div class="row">
         <form id="searchForm">
     <div class="col s12 m6">
-      <nav>
+      <nav style="color: #212121;">
         <div class="nav-wrapper">
             <div class="input-field white">
-              <input id="searchAuthorizer" name="searchAuthorizer" type="search" required placeholder="Search Authorizer Public Key">
+              <input id="searchAuthorizer" name="searchAuthorizer" type="search" placeholder="Search Authorizer Public Key">
               <label for="searchAuthorizer"><i class="material-icons" style="color: #444">search</i></label>
               <i class="material-icons">close</i>
             </div>
@@ -160,10 +166,10 @@
       </nav>
     </div>
     <div class="col s12 m6">
-      <nav>
+      <nav style="color: #212121;">
         <div class="nav-wrapper">
             <div class="input-field white">
-              <input id="searchIndividual" name="searchIndividual" type="search" required placeholder="Search Individual Public Key">
+              <input id="searchIndividual" name="searchIndividual" type="search" placeholder="Search Individual Public Key">
               <label for="searchIndividual"><i class="material-icons" style="color: #444">search</i></label>
               <i class="material-icons">close</i>
             </div>
@@ -171,9 +177,24 @@
       </nav>
 
     </div>
-    <input type="submit" value="submit"/>
+          <hr style="border: 1px solid white;">
+          <hr style="border: 1px solid white;">
+          <button class="btn waves-effect waves-light" type="submit" name="action">Search
+          </button>
         </form>
   </div>
+</template>
+
+<template name="fileInput">
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Upload File</span>
+        <input type="file" id="img" name="">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
 </template>
 
 <template name="certificateCard">
