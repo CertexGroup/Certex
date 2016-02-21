@@ -19,19 +19,21 @@
             <div class="row">
               <div class="input-field col s12 m6">
                 <select name="certTitleDropdown">
+                  <option value="0">Select One</option>
                   {{#each certificateTemplates}}
                     {{> certificateTemplate}}
                   {{/each}}
                 </select>
-              <label>Template</label>
+              <label>Title</label>
               </div>
               <div class="input-field col s12 m6">
                   <select name="certCatDropdown">
+                    <option value="0">Select One</option>
                     {{#each certificateCategories}}
                       {{> category}}
                     {{/each}}
                   </select>
-                  <label>Category</label>
+                  <label>Preset</label>
               </div>
             </div>
             <div class="row">
@@ -48,7 +50,7 @@
             </div>
 
             <div class="row">
-              <button id="createCert" class="btn-large waves-light waves-effect">Create Certificate</button>
+              <button id="createCert" class="btn-large waves-light waves-effect blue darken-2">Create Certificate <i class="material-icons right">send</i></button>
             </div>
 
             {{> floatingButtonCreateCertificate}}
@@ -192,7 +194,7 @@
         <input type="file" id="img" name="">
       </div>
       <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
+        <input class="file-path validate" type="text" name="certificatePhoto">
       </div>
     </div>
 </template>
@@ -221,5 +223,140 @@
       </div>
     </div>
 
+  </div>
+</template>
+
+<template name="registerAuthority">
+    {{>nav}}
+
+  <div class="container">
+    <h2>Register Authority</h2>
+    <div class="row">
+        <form class="new-cert col s12">
+            <div class="row">
+              {{> authNameInput}}
+
+              {{> authRFCInput}}
+            </div>
+            <div class="row">
+              {{> authEmailInput}}
+
+              {{> authPasswordInput}}
+            </div>
+            <div class="row">
+                {{> authPhoneInput}}
+            </div>
+
+            <div class="row">
+              <button id="registerAuth" class="btn-large waves-light waves-effect blue darken-2">Register Authority <i class="material-icons right">send</i></button>
+            </div>
+        </form>
+    </div>
+  </div>
+</template>
+
+<template name="authNameInput">
+  <div class="input-field col s12 m6">
+      <input type="text" id="authName" class="validate" name="authName"/>
+      <label for="authName">Authority Name</label>
+  </div>
+</template>
+
+<template name="authRFCInput">
+  <div class="input-field col s12 m6">
+      <input type="text" id="authRFC" class="validate" name="authRFC"/>
+      <label for="authRFC">Authority RFC</label>
+  </div>
+</template>
+
+<template name="authEmailInput">
+  <div class="input-field col s12 m6">
+      <input type="text" id="authEmail" class="validate" name="authEmail"/>
+      <label for="authEmail">Authority Contact Email</label>
+  </div>
+</template>
+
+<template name="authPasswordInput">
+  <div class="input-field col s12 m6">
+      <input type="password" id="authPassword" class="validate" name="authPassword"/>
+      <label for="authPassword">Authority Password</label>
+  </div>
+</template>
+
+<template name="authPhoneInput">
+  <div class="input-field col s12 m6">
+      <input type="tel" id="authPhone" class="validate" name="authPhone"/>
+      <label for="authPhone">Authority Contact Phone</label>
+  </div>
+</template>
+
+<template name="registerIndividual">
+    {{>nav}}
+
+  <div class="container">
+    <h2>Register Individual</h2>
+    <div class="row">
+        <form class="new-cert col s12">
+            <div class="row">
+              {{> individualNameInput}}
+
+              {{> individualCURPInput}}
+            </div>
+            <div class="row">
+              {{> individualEmailInput}}
+
+              {{> individualPasswordInput}}
+            </div>
+            <div class="row">
+                {{> individualPhotoInput}}
+            </div>
+
+            <div class="row">
+              <button id="registerIndividual" class="btn-large waves-light waves-effect blue darken-2">Register Individual <i class="material-icons right">send</i></button>
+            </div>
+        </form>
+    </div>
+  </div>
+</template>
+
+<template name="individualNameInput">
+  <div class="input-field col s12 m6">
+      <input type="text" id="individualName" class="validate" name="individualName"/>
+      <label for="individualName">Individual Name</label>
+  </div>
+</template>
+
+<template name="individualCURPInput">
+  <div class="input-field col s12 m6">
+      <input type="text" id="individualCURP" class="validate" name="individualCURP"/>
+      <label for="individualCURP">Individual CURP</label>
+  </div>
+</template>
+
+<template name="individualEmailInput">
+  <div class="input-field col s12 m6">
+      <input type="text" id="individualEmail" class="validate" name="individualEmail"/>
+      <label for="individualEmail">Individual Email</label>
+  </div>
+</template>
+
+<template name="individualPasswordInput">
+  <div class="input-field col s12 m6">
+      <input type="password" id="individualPassword" class="validate" name="individualPassword"/>
+      <label for="individualPassword">Individual Password</label>
+  </div>
+</template>
+
+<template name="individualPhotoInput">
+  <div class="input-field col s12 m6">
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Upload File</span>
+        <input type="file" id="img" name="">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" name="individualPhoto">
+      </div>
+    </div>
   </div>
 </template>
