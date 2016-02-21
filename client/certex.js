@@ -22,6 +22,43 @@ if (Meteor.isClient) {
     ]
   });
 
+  Template.createCertificate.events({
+    "submit": function(event){
+      event.preventDefault();
+
+      var submitted_pub_auth = event.target.publicKeyHost.value;
+      var submitted_pub_indiv = event.target.publicKeyGuest.value;
+      var submitted_title = event.target.certTitleDropdown.value;
+      var submitted_category = event.target.certCatDropdown.value;
+      //var submitted_file = ;
+      var submitted_from_date = event.target.fromDate.value;
+      var submitted_to_date = event.target.toDate.value;
+      var submitted_description = event.target.certDescription.value;
+
+      Certificates.insert({
+        public_key_auth: submitted_pub_auth,
+        public_key_individual: submitted_pub_indiv,
+        title: submitted_title,
+        category: submitted_category,
+        //file: ,
+        from_date: submitted_from_date,
+        expiry_date: submitted_to_date,
+        date_created: new Date(),
+        description: submitted_description
+      })
+    }
+  })
+
+  Template.createCertificate.onRendered(function() {
+    $('select').material_select();
+    $('.button-collapse').sideNav();
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+    $('.tooltipped').tooltip({delay: 50});
+  });
+
   Template.floatingButtonCreateCertificate.events({
 
     "click .date-btn": function () {
@@ -59,7 +96,6 @@ if (Meteor.isClient) {
 
   Template.search.events({
     "submit #searchForm":function(event){
-      console.log("hola");
       event.preventDefault();
       var searchAuthorizer = event.target.searchAuthorizer.value;
       var searchIndividual = event.target.searchIndividual.value;
@@ -69,22 +105,12 @@ if (Meteor.isClient) {
 
   Template.publicKeyInput.helpers({
     publicKeyHost: function(){
-      return "Girresawgrntej6uj"
+      return "1"
     },
   });
 
   Template.explore.helpers({
-    
-  });
 
-  Template.createCertificate.onRendered(function() {
-    $('select').material_select();
-    $('.button-collapse').sideNav();
-    $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
-    $('.tooltipped').tooltip({delay: 50});
   });
 
   Template.explore.onRendered(function () {
@@ -95,17 +121,4 @@ if (Meteor.isClient) {
     passwordSignupFields: "USERNAME_ONLY"
   });
 
-}
-
-function getParameter(paramName) {
-  var searchString = window.location.search.substring(1),
-      i, val, params = searchString.split("&");
-
-  for (i=0;i<params.length;i++) {
-    val = params[i].split("=");
-    if (val[0] == paramName) {
-      return val[1];
-    }
-  }
-  return null;
 }

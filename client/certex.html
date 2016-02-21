@@ -1,3 +1,5 @@
+<body>
+</body>
 
 <template name="createCertificate">
     {{>nav}}
@@ -7,19 +9,24 @@
     <div class="row">
         <form class="new-cert col s12">
             <div class="row">
-              {{> publicKeyInput}}
+              {{#each authority}}
+                {{> publicKeyInput}}
+              {{/each}}
+            </div>
+            <div class="row">
+              {{> privateKeyInput}}
             </div>
             <div class="row">
               <div class="input-field col s12 m6">
-              <select>
-                {{#each certificateTemplates}}
-                  {{> certificateTemplate}}
-                {{/each}}
-              </select>
+                <select name="certTitleDropdown">
+                  {{#each certificateTemplates}}
+                    {{> certificateTemplate}}
+                  {{/each}}
+                </select>
               <label>Template</label>
               </div>
               <div class="input-field col s12 m6">
-                  <select>
+                  <select name="certCatDropdown">
                     {{#each certificateCategories}}
                       {{> category}}
                     {{/each}}
@@ -40,6 +47,10 @@
               {{> descriptionInput}}
             </div>
 
+            <div class="row">
+              <button id="createCert" class="btn-large waves-light waves-effect">Create Certificate</button>
+            </div>
+
             {{> floatingButtonCreateCertificate}}
         </form>
     </div>
@@ -48,12 +59,19 @@
 
 <template name="publicKeyInput">
   <div class="input-field col s12 m6">
-      <input disabled type="text" id="publicKeyHost" class="validate" name="publicKeyHost" value="{{publicKeyHost}}" />
+      <input disabled type="text" id="publicKeyHost" class="validate" name="publicKeyHost" value="{{public_key}}" />
       <label for="publicKeyHost" class="active">Your Public Key</label>
   </div>
   <div class="input-field col s12 m6">
       <input type="text" id="publicKeyGuest" class="validate" name="publicKeyGuest" />
       <label for="publicKeyGuest">Public Key to Certify</label>
+  </div>
+</template>
+
+<template name="privateKeyInput">
+  <div class="input-field col s12 m12">
+      <input type="text" id="privateKeyHost" class="validate" name="privateKeyHost" />
+      <label for="privateKeyHost">Private Key to Sign</label>
   </div>
 </template>
 
@@ -68,19 +86,19 @@
 
 <template name="dateInput">
   <div hidden class="input-field col s12 m6 date-wrapper">
-      <input type="date" class="datepicker">
+      <input type="date" class="datepicker" name="fromDate">
       <label>From</label>
   </div>
   <div hidden class="input-field col s12 m6 date-wrapper">
-      <input type="date" class="datepicker">
+      <input type="date" class="datepicker" name="toDate">
       <label>To</label>
   </div>
 </template>
 
 <template name="descriptionInput">
   <div hidden class="input-field col s12 description-wrapper">
-    <textarea name="description" class="materialize-textarea" id="description"></textarea>
-    <label for="description">Detailed Description</label>
+    <textarea name="certDescription" class="materialize-textarea" id="certDescription"></textarea>
+    <label for="certDescription">Detailed Description</label>
   </div>
 </template>
 
@@ -175,7 +193,7 @@
     <div class="file-field input-field">
       <div class="btn">
         <span>Upload File</span>
-        <input type="file" name="">
+        <input type="file" id="img" name="">
       </div>
       <div class="file-path-wrapper">
         <input class="file-path validate" type="text">
@@ -198,8 +216,8 @@
             </div>
             <div class="col s6 m9">
               <p><b>Details:</b> {{description}}</p>
-              <p>Expires: {{expiration}}</p>
-              <p>Fecha Expedida: {{fecha_exp}}</p>
+              <p>Expires: {{expiry_date}}</p>
+              <p>Fecha Expedida: {{date_created}}</p>
               <p>Firma Digital: {{firma_dig}}</p>
             </div>
           </div>
