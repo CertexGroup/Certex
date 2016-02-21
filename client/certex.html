@@ -28,6 +28,11 @@
               </div>
             </div>
             <div class="row">
+              <div class="input-field col s12 m12">
+                {{> fileInput}}
+              </div>
+            </div>
+            <div class="row">
               {{> dateInput}}
             </div>
 
@@ -116,4 +121,16 @@
 
     </div>
   </nav>
+</template>
+
+<template name="fileInput">
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Upload File</span>
+        <input type="file" name="">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
 </template>
