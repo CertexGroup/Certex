@@ -155,10 +155,10 @@
   <div class="row">
         <form id="searchForm">
     <div class="col s12 m6">
-      <nav>
+      <nav style="color: #212121;">
         <div class="nav-wrapper">
             <div class="input-field white">
-              <input id="searchAuthorizer" name="searchAuthorizer" type="search" required placeholder="Search Authorizer Public Key">
+              <input id="searchAuthorizer" name="searchAuthorizer" type="search" placeholder="Search Authorizer Public Key">
               <label for="searchAuthorizer"><i class="material-icons" style="color: #444">search</i></label>
               <i class="material-icons">close</i>
             </div>
@@ -166,10 +166,10 @@
       </nav>
     </div>
     <div class="col s12 m6">
-      <nav>
+      <nav style="color: #212121;">
         <div class="nav-wrapper">
             <div class="input-field white">
-              <input id="searchIndividual" name="searchIndividual" type="search" required placeholder="Search Individual Public Key">
+              <input id="searchIndividual" name="searchIndividual" type="search" placeholder="Search Individual Public Key">
               <label for="searchIndividual"><i class="material-icons" style="color: #444">search</i></label>
               <i class="material-icons">close</i>
             </div>
@@ -177,7 +177,10 @@
       </nav>
 
     </div>
-    <input type="submit" value="submit"/>
+          <hr style="border: 1px solid white;">
+          <hr style="border: 1px solid white;">
+          <button class="btn waves-effect waves-light" type="submit" name="action">Search
+          </button>
         </form>
   </div>
 </template>
