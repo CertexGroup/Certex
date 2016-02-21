@@ -1,6 +1,15 @@
 
-<template name="hello">
-    <h1>yer mum</h1>
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="emitir-cert">
+    <h1>Emitir Certificado</h1>
+  <form class="new-cert">
+    <input type="text" name="llavePublicaAut" placeholder="{{llavePublicaAut}}"/>
+    <input type="text" name="llavePublicaCert" placeholder="Agregar llave a certificar"/>
+    <select>
+      {{#each categoriasCert}}
+        {{> categoria}}
+      {{/each}}
+    </select>
 </template>
+
+<template name="categoria">
+  <option value="{{nombre}}"
