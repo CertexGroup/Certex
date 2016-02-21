@@ -17,8 +17,35 @@ if (Meteor.isClient) {
   });
 
   Template.createCertificate.events({
-    "click #date-btn":function(){
-      $('.date-wrapper').show();
+
+    "click .date-btn": function () {
+      if($('.date-btn').hasClass('add')){
+        $('.date-wrapper').show();
+        $('#date-icon')[0].innerHTML = "clear";
+        $('.date-btn').removeClass("add");
+        $('.date-btn').addClass("red cancel");
+      }
+      else {
+        $('.date-wrapper').hide();
+        $('#date-icon')[0].innerHTML = "date_range";
+        $('.date-btn').removeClass("red cancel");
+        $('.date-btn').addClass("add");
+      }
+    },
+
+    "click .description-btn": function () {
+      if($('.description-btn').hasClass('add')){
+        $('.description-wrapper').show();
+        $('#desc-icon')[0].innerHTML = "clear";
+        $('.description-btn').removeClass("add");
+        $('.description-btn').addClass("red cancel");
+      }
+      else {
+        $('.description-wrapper').hide();
+        $('#desc-icon')[0].innerHTML = "insert_comment";
+        $('.description-btn').removeClass("red cancel");
+        $('.description-btn').addClass("add");
+      }
     }
   });
 

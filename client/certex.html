@@ -33,28 +33,35 @@
                   </select>
                   <label>Category</label>
               </div>
+            </div>
+            <div class="row">
               <div hidden class="input-field col s12 m6 date-wrapper">
-                <input type="date" class="datepicker">
-                <label>From</label>
+                  <input type="date" class="datepicker">
+                  <label>From</label>
               </div>
               <div hidden class="input-field col s12 m6 date-wrapper">
-                <input type="date" class="datepicker">
-                <label>To</label>
+                  <input type="date" class="datepicker">
+                  <label>To</label>
               </div>
             </div>
+
+            <div class="row">
+              <div hidden class="input-field col s12 description-wrapper">
+                <textarea name="description" class="materialize-textarea" id="description"></textarea>
+                <label for="description">Detailed Description</label>
+              </div>
+            </div>
+
             <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
               <a class="btn-floating btn-large">
                 <i class="material-icons">add</i>
               </a>
               <ul>
                 <li>
-                  <a class="btn-floating" id="date-btn"><i class="material-icons">date_range</i></a>
+                  <a class="btn-floating date-btn add"><i class="material-icons" id="date-icon">date_range</i></a>
                 </li>
                 <li>
-                  <a class="btn-floating" id="comment-btn"><i class="material-icons">insert_comment</i></a>
-                </li>
-                <li>
-                  <a class="btn-floating"><i class="material-icons">insert_chart</i></a>
+                  <a class="btn-floating description-btn add"><i class="material-icons" id="desc-icon">insert_comment</i></a>
                 </li>
               </ul>
             </div>
