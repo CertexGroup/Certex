@@ -1,15 +1,50 @@
 
-<template name="emitir-cert">
-    <h1>Emitir Certificado</h1>
+<template name="createCertificate">
+  <nav class="blue darken-2">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
   <form class="new-cert">
-    <input type="text" name="llavePublicaAut" placeholder="{{llavePublicaAut}}"/>
-    <input type="text" name="llavePublicaCert" placeholder="Agregar llave a certificar"/>
-    <select>
-      {{#each categoriasCert}}
-        {{> categoria}}
-      {{/each}}
-    </select>
+    <input type="text" name="publicKeyHost" placeholder="{{publicKeyHost}}"/>
+    <input type="text" name="publicKeyGuest" placeholder="Add public key to certify"/>
+    <div class="input-field col s12">
+      <select>
+        {{#each certificateTemplates}}
+          {{> certificateTemplate}}
+        {{/each}}
+      </select>
+      <label>Template</label>
+    </div>
+    <div class="input-field col s12">
+     <select>
+       <option value="" disabled selected>Choose your option</option>
+       <option value="1">Option 1</option>
+       <option value="2">Option 2</option>
+       <option value="3">Option 3</option>
+     </select>
+     <label>Materialize Select</label>
+   </div>
+    <div class="input-field col s12">
+      <select>
+        {{#each certificateCategories}}
+          {{> category}}
+        {{/each}}
+      </select>
+      <label>Category</label>
+    </div>
+  </form>
 </template>
 
-<template name="categoria">
-  <option value="{{nombre}}"
+<template name="certificateTemplate">
+  <option value="{{title}}">{{title}}</option>
+</template>
+
+<template name="category">
+  <option value="{{category}}">{{category}}</option>
+</template>
