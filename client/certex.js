@@ -22,6 +22,47 @@ if (Meteor.isClient) {
     ]
   });
 
+  Template.registerAuthority.events({
+    "submit":function(event){
+      event.preventDefault();
+
+      var submitted_name = event.target.authName.value;
+      var submitted_RFC = event.target.authRFC.value;
+      var submitted_email = event.target.authEmail.value;
+      var submitted_phone = event.target.authPhone.value;
+      var submitted_password = event.target.authPassword.value;
+
+      Authorities.insert({
+        name: submitted_name,
+        rfc: submitted_RFC,
+        email: submitted_email,
+        password: submitted_password,
+        phone: submitted_phone,
+        createdAt: new Date()
+      })
+    }
+  });
+
+  Template.registerIndividual.events({
+    "submit":function(event){
+      event.preventDefault();
+
+      var submitted_name = event.target.individualName.value;
+      var submitted_CURP = event.target.individualCURP.value;
+      var submitted_email = event.target.individualEmail.value;
+      var submitted_password = event.target.individualPassword.value;
+      //var submitted_photo = ;
+
+      Authorities.insert({
+        name: submitted_name,
+        curp: submitted_CURP,
+        email: submitted_email,
+        password: submitted_password,
+        createdAt: new Date()
+      })
+    }
+  });
+
   Template.createCertificate.events({
     "submit": function(event){
       event.preventDefault();
