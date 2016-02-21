@@ -11,15 +11,15 @@
             </div>
             <div class="row">
               <div class="input-field col s12 m6">
-              <select>
-                {{#each certificateTemplates}}
-                  {{> certificateTemplate}}
-                {{/each}}
-              </select>
+                <select name="certTitleDropdown">
+                  {{#each certificateTemplates}}
+                    {{> certificateTemplate}}
+                  {{/each}}
+                </select>
               <label>Template</label>
               </div>
               <div class="input-field col s12 m6">
-                  <select>
+                  <select name="certCatDropdown">
                     {{#each certificateCategories}}
                       {{> category}}
                     {{/each}}
@@ -66,21 +66,33 @@
   <option value="{{category}}">{{category}}</option>
 </template>
 
+<template name="fileInput">
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Upload File</span>
+        <input type="file" name="fileUploaded">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+</template>
+
 <template name="dateInput">
   <div hidden class="input-field col s12 m6 date-wrapper">
-      <input type="date" class="datepicker">
+      <input type="date" class="datepicker" name="fromDate">
       <label>From</label>
   </div>
   <div hidden class="input-field col s12 m6 date-wrapper">
-      <input type="date" class="datepicker">
+      <input type="date" class="datepicker" name="toDate">
       <label>To</label>
   </div>
 </template>
 
 <template name="descriptionInput">
   <div hidden class="input-field col s12 description-wrapper">
-    <textarea name="description" class="materialize-textarea" id="description"></textarea>
-    <label for="description">Detailed Description</label>
+    <textarea name="certDescription" class="materialize-textarea" id="certDescription"></textarea>
+    <label for="certDescription">Detailed Description</label>
   </div>
 </template>
 
@@ -164,18 +176,6 @@
   </div>
 </template>
 
-<template name="fileInput">
-    <div class="file-field input-field">
-      <div class="btn">
-        <span>Upload File</span>
-        <input type="file" name="">
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
-      </div>
-    </div>
-</template>
-
 <template name="certificateCard">
   <div class="card">
     <div class="row">
@@ -191,8 +191,8 @@
             </div>
             <div class="col s6 m9">
               <p><b>Details:</b> {{description}}</p>
-              <p>Expires: {{expiration}}</p>
-              <p>Fecha Expedida: {{fecha_exp}}</p>
+              <p>Expires: {{expiry_date}}</p>
+              <p>Fecha Expedida: {{date_created}}</p>
               <p>Firma Digital: {{firma_dig}}</p>
             </div>
           </div>
