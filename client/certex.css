@@ -21,3 +21,13 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+
+.brand-logo {
+  padding-left: 30px !important;
+}
+
+@media (max-width: 978px) { 
+  .brand-logo {
+    padding: 0px !important;
+  }
+}
