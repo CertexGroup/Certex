@@ -16,6 +16,10 @@ if (Meteor.isClient) {
     ]
   });
 
+  Template.createCertificate.onRendered(function() {
+    $('select').material_select();
+  });
+
 }
 
 if (Meteor.isServer) {
@@ -23,3 +27,4 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
