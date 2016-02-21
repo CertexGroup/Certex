@@ -1,5 +1,13 @@
-Certificates = new Mongo.Collection("certificates");
+
+
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    // code to run on server at startup
+  });
+}
+
 if (Meteor.isClient) {
+
 
   Template.createCertificate.helpers({
     certificateCategories:[
@@ -66,32 +74,7 @@ if (Meteor.isClient) {
   });
 
   Template.explore.helpers({
-    /*certificates: function(){
-      var searchAuthorizer = getParameter("authSearch");
-      var searchIndividual = getParameter("individualSearch");
-      return Certificates.find({auth_public_key: {$ne: searchAuthorizer},
-                                indiv_public_key: {$ne: searchIndividual}});
-    }*/
-    certificates: [
-    {
-      title: "LOL",
-      category: "BBB",
-      description: "Supah LOL",
-      expiration: "2016-03-03",
-      fecha_exp: "2015-04-03",
-      firma_dig:"añlskdfjñlaksjfñlkdasj"
-    },{
-      title: "LOL2",
-      description: "Supah KOEKCOc ejoefih hoih",
-      fecha_exp: "2015-04-03",
-      firma_dig:"añlskdasdfaeweasfñlkdasj"
-    },{
-      title: "LOL3",
-      category: "BBC",
-      description: "Supah LOL",
-      fecha_exp: "2015-04-03",
-      firma_dig:"asdfeljowieñjoiqjweofñqweh"
-    }]
+    
   });
 
   Template.createCertificate.onRendered(function() {
@@ -105,12 +88,6 @@ if (Meteor.isClient) {
   });
 
 
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
 }
 
 function getParameter(paramName) {
