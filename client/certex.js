@@ -26,6 +26,7 @@ if (Meteor.isClient) {
         $('.date-btn').addClass("red cancel");
       }
       else {
+        $('.datepicker').val(""); // clearing the value on hide
         $('.date-wrapper').hide();
         $('#date-icon')[0].innerHTML = "date_range";
         $('.date-btn').removeClass("red cancel");
@@ -41,6 +42,7 @@ if (Meteor.isClient) {
         $('.description-btn').addClass("red cancel");
       }
       else {
+        $('textarea').val("");
         $('.description-wrapper').hide();
         $('#desc-icon')[0].innerHTML = "insert_comment";
         $('.description-btn').removeClass("red cancel");
