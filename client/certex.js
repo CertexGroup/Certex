@@ -1,9 +1,6 @@
 if (Meteor.isClient) {
 
   Template.createCertificate.helpers({
-    publicKeyHost: function(){
-      return "Girresawgrntej6uj"
-    },
     certificateCategories:[
       {category: "category 1"},
       {category: "category 2"},
@@ -16,7 +13,7 @@ if (Meteor.isClient) {
     ]
   });
 
-  Template.createCertificate.events({
+  Template.floatingButtonCreateCertificate.events({
 
     "click .date-btn": function () {
       if($('.date-btn').hasClass('add')){
@@ -49,6 +46,12 @@ if (Meteor.isClient) {
         $('.description-btn').addClass("add");
       }
     }
+  });
+
+  Template.publicKeyInput.helpers({
+    publicKeyHost: function(){
+      return "Girresawgrntej6uj"
+    },
   });
 
   Template.createCertificate.onRendered(function() {
