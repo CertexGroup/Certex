@@ -135,32 +135,32 @@
 
 <template name="search">
   <div class="row">
+        <form id="searchForm">
     <div class="col s12 m6">
       <nav>
         <div class="nav-wrapper">
-          <form>
             <div class="input-field white">
-              <input id="searchAuthorizer" type="search" required placeholder="Search Authorizer Public Key">
+              <input id="searchAuthorizer" name="searchAuthorizer" type="search" required placeholder="Search Authorizer Public Key">
               <label for="searchAuthorizer"><i class="material-icons" style="color: #444">search</i></label>
               <i class="material-icons">close</i>
             </div>
-          </form>
         </div>
       </nav>
     </div>
     <div class="col s12 m6">
       <nav>
         <div class="nav-wrapper">
-          <form>
             <div class="input-field white">
-              <input id="searchIndividual" type="search" required placeholder="Search Individual Public Key">
+              <input id="searchIndividual" name="searchIndividual" type="search" required placeholder="Search Individual Public Key">
               <label for="searchIndividual"><i class="material-icons" style="color: #444">search</i></label>
               <i class="material-icons">close</i>
             </div>
-          </form>
         </div>
       </nav>
+
     </div>
+    <input type="submit" value="submit"/>
+        </form>
   </div>
 </template>
 
@@ -192,6 +192,8 @@
             <div class="col s6 m9">
               <p><b>Details:</b> {{description}}</p>
               <p>Expires: {{expiration}}</p>
+              <p>Fecha Expedida: {{fecha_exp}}</p>
+              <p>Firma Digital: {{firma_dig}}</p>
             </div>
           </div>
         </div>
