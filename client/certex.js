@@ -39,7 +39,13 @@ if (Meteor.isClient) {
         password: submitted_password,
         phone: submitted_phone,
         createdAt: new Date()
-      })
+      });
+      event.target.authName.value = "";
+      event.target.authRFC.value = "";
+      event.target.authEmail.value = "";
+      event.target.authPhone.value = "";
+      event.target.authPassword.value = "";
+      Materialize.toast('Authority Registered Successfully!', 2000);
     }
   });
 
@@ -59,7 +65,13 @@ if (Meteor.isClient) {
         email: submitted_email,
         password: submitted_password,
         createdAt: new Date()
-      })
+      });
+      event.target.individualName.value = "";
+      event.target.individualCURP.value = "";
+      event.target.individualEmail.value = "";
+      event.target.individualPassword.value = "";
+      event.target.individualPhoto.value="";
+      Materialize.toast('Individual Registered Successfully!', 2000);
     }
   });
 
@@ -75,6 +87,7 @@ if (Meteor.isClient) {
       var submitted_from_date = event.target.fromDate.value;
       var submitted_to_date = event.target.toDate.value;
       var submitted_description = event.target.certDescription.value;
+      var submitted_private_key = event.target.privateKeyHost.value;
 
       Certificates.insert({
         public_key_auth: submitted_pub_auth,
@@ -85,8 +98,18 @@ if (Meteor.isClient) {
         from_date: submitted_from_date,
         expiry_date: submitted_to_date,
         date_created: new Date(),
-        description: submitted_description
-      })
+        description: submitted_description,
+        private_key_host: submitted_private_key
+      });
+      event.target.publicKeyGuest.value = "";
+      event.target.certTitleDropdown.value = 0;
+      event.target.certCatDropdown.value = 0;
+      event.target.fromDate.value = "";
+      event.target.toDate.value = "";
+      event.target.certDescription.value = "";
+      event.target.privateKeyHost.value="";
+      event.target.certificatePhoto.value="";
+      Materialize.toast('Certificate Created Successfully!', 2000);
     }
   })
 

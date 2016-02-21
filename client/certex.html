@@ -19,19 +19,21 @@
             <div class="row">
               <div class="input-field col s12 m6">
                 <select name="certTitleDropdown">
+                  <option value="0">Select One</option>
                   {{#each certificateTemplates}}
                     {{> certificateTemplate}}
                   {{/each}}
                 </select>
-              <label>Template</label>
+              <label>Title</label>
               </div>
               <div class="input-field col s12 m6">
                   <select name="certCatDropdown">
+                    <option value="0">Select One</option>
                     {{#each certificateCategories}}
                       {{> category}}
                     {{/each}}
                   </select>
-                  <label>Category</label>
+                  <label>Preset</label>
               </div>
             </div>
             <div class="row">
@@ -192,7 +194,7 @@
         <input type="file" id="img" name="">
       </div>
       <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
+        <input class="file-path validate" type="text" name="certificatePhoto">
       </div>
     </div>
 </template>
@@ -353,7 +355,7 @@
         <input type="file" id="img" name="">
       </div>
       <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
+        <input class="file-path validate" type="text" name="individualPhoto">
       </div>
     </div>
   </div>
