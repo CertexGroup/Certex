@@ -10,28 +10,53 @@
                 <div class="input-field col s12 m6">
                     <input disabled type="text" id="publicKeyHost" class="validate" name="publicKeyHost" value="{{publicKeyHost}}" />
                     <label for="publicKeyHost" class="active">Public Key Host</label>
-                </div>                
+                </div>
                 <div class="input-field col s12 m6">
                     <input type="text" id="publicKeyGuest" class="validate" name="publicKeyGuest" />
                     <label for="publicKeyGuest">Public Key to Certify</label>
                 </div>
             </div>
-            
-            <div class="input-field col s12">
-            <select>
-              {{#each certificateTemplates}}
-                {{> certificateTemplate}}
-              {{/each}}
-            </select>
-            <label>Template</label>
+            <div class="row">
+              <div class="input-field col s12 m6">
+              <select>
+                {{#each certificateTemplates}}
+                  {{> certificateTemplate}}
+                {{/each}}
+              </select>
+              <label>Template</label>
+              </div>
+              <div class="input-field col s12 m6">
+                  <select>
+                    {{#each certificateCategories}}
+                      {{> category}}
+                    {{/each}}
+                  </select>
+                  <label>Category</label>
+              </div>
+              <div hidden class="input-field col s12 m6 date-wrapper">
+                <input type="date" class="datepicker">
+                <label>From</label>
+              </div>
+              <div hidden class="input-field col s12 m6 date-wrapper">
+                <input type="date" class="datepicker">
+                <label>To</label>
+              </div>
             </div>
-            <div class="input-field col s12">
-                <select>
-                  {{#each certificateCategories}}
-                    {{> category}}
-                  {{/each}}
-                </select>
-                <label>Category</label>
+            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+              <a class="btn-floating btn-large">
+                <i class="material-icons">add</i>
+              </a>
+              <ul>
+                <li>
+                  <a class="btn-floating" id="date-btn"><i class="material-icons">date_range</i></a>
+                </li>
+                <li>
+                  <a class="btn-floating" id="comment-btn"><i class="material-icons">insert_comment</i></a>
+                </li>
+                <li>
+                  <a class="btn-floating"><i class="material-icons">insert_chart</i></a>
+                </li>
+              </ul>
             </div>
         </form>
     </div>

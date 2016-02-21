@@ -16,10 +16,21 @@ if (Meteor.isClient) {
     ]
   });
 
+  Template.createCertificate.events({
+    "click #date-btn":function(){
+      $('.date-wrapper').show();
+    }
+  });
+
   Template.createCertificate.onRendered(function() {
     $('select').material_select();
     $('.button-collapse').sideNav();
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
   });
+
 
 }
 
@@ -28,4 +39,3 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
-
