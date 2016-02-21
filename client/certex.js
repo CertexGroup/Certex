@@ -54,6 +54,23 @@ if (Meteor.isClient) {
     },
   });
 
+  Template.explore.helpers({
+    certificates: [
+    {
+      title: "LOL",
+      category: "BBB",
+      description: "Supah LOL",
+      expiration: "2016-03-03"
+    },{
+      title: "LOL2",
+      description: "Supah KOEKCOc ejoefih hoih"
+    },{
+      title: "LOL3",
+      category: "BBC",
+      description: "Supah LOL"
+    }]
+  });
+
   Template.createCertificate.onRendered(function() {
     $('select').material_select();
     $('.button-collapse').sideNav();

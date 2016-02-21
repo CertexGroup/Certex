@@ -125,9 +125,10 @@
 <template name="explore">
   {{> nav}}
    <div class="container">
+      <h2>Explore Certificates</h2>
      {{> search}}
      {{#each certificates}}
-        {{> certificate}}
+        {{> certificateCard}}
      {{/each}}
   </div>
 </template>
@@ -161,6 +162,8 @@
       </nav>
     </div>
   </div>
+</template>
+
 <template name="fileInput">
     <div class="file-field input-field">
       <div class="btn">
@@ -171,4 +174,29 @@
         <input class="file-path validate" type="text">
       </div>
     </div>
+</template>
+
+<template name="certificateCard">
+  <div class="card">
+    <div class="row">
+      <div class="col s4 m2">
+        <img class="responsive-img img-thumbnail" src="https://c1.staticflickr.com/5/4112/5170590074_714d36db83_b.jpg" alt="">
+      </div>
+      <div class="col s8 m10">
+        <div class="card-content">
+          <div class="row">
+            <div class="col s6 m3">
+              <span class="card-title activator grey-text text-darken-4">{{title}}</span>
+              <p>{{#if category}}{{category}}{{/if}}</p>
+            </div>
+            <div class="col s6 m9">
+              <p><b>Details:</b> {{description}}</p>
+              <p>Expires: {{expiration}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </template>
