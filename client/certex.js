@@ -87,6 +87,13 @@ if (Meteor.isClient) {
     $('.tooltipped').tooltip({delay: 50});
   });
 
+  Template.explore.onRendered(function () {
+    $('.button-collapse').sideNav();
+  });
+
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+  });
 
 }
 
