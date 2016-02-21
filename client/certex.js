@@ -1,6 +1,4 @@
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
   Template.createCertificate.helpers({
     publicKeyHost: function(){
@@ -11,7 +9,7 @@ if (Meteor.isClient) {
       {category: "category 2"},
       {category: "category 3"}
     ],
-    certificateTemplate:[
+    certificateTemplates:[
       {title: "title 1"},
       {title: "title 2"},
       {title: "title 3"}
