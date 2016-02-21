@@ -1,3 +1,5 @@
+<body>
+</body>
 
 <template name="createCertificate">
     {{>nav}}
@@ -7,7 +9,12 @@
     <div class="row">
         <form class="new-cert col s12">
             <div class="row">
-              {{> publicKeyInput}}
+              {{#each authority}}
+                {{> publicKeyInput}}
+              {{/each}}
+            </div>
+            <div class="row">
+              {{> privateKeyInput}}
             </div>
             <div class="row">
               <div class="input-field col s12 m6">
@@ -40,6 +47,10 @@
               {{> descriptionInput}}
             </div>
 
+            <div class="row">
+              <button id="createCert" class="btn-large waves-light waves-effect">Create Certificate</button>
+            </div>
+
             {{> floatingButtonCreateCertificate}}
         </form>
     </div>
@@ -48,12 +59,19 @@
 
 <template name="publicKeyInput">
   <div class="input-field col s12 m6">
-      <input disabled type="text" id="publicKeyHost" class="validate" name="publicKeyHost" value="{{publicKeyHost}}" />
+      <input disabled type="text" id="publicKeyHost" class="validate" name="publicKeyHost" value="{{public_key}}" />
       <label for="publicKeyHost" class="active">Your Public Key</label>
   </div>
   <div class="input-field col s12 m6">
       <input type="text" id="publicKeyGuest" class="validate" name="publicKeyGuest" />
       <label for="publicKeyGuest">Public Key to Certify</label>
+  </div>
+</template>
+
+<template name="privateKeyInput">
+  <div class="input-field col s12 m12">
+      <input type="text" id="privateKeyHost" class="validate" name="privateKeyHost" />
+      <label for="privateKeyHost">Private Key to Sign</label>
   </div>
 </template>
 
@@ -168,7 +186,7 @@
     <div class="file-field input-field">
       <div class="btn">
         <span>Upload File</span>
-        <input type="file" name="">
+        <input type="file" id="img" name="">
       </div>
       <div class="file-path-wrapper">
         <input class="file-path validate" type="text">
