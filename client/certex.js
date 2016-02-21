@@ -18,6 +18,7 @@ if (Meteor.isClient) {
 
   Template.createCertificate.onRendered(function() {
     $('select').material_select();
+    $('.button-collapse').sideNav();
   });
 
 }
