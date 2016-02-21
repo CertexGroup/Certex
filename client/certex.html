@@ -7,14 +7,7 @@
     <div class="row">
         <form class="new-cert col s12">
             <div class="row">
-                <div class="input-field col s12 m6">
-                    <input disabled type="text" id="publicKeyHost" class="validate" name="publicKeyHost" value="{{publicKeyHost}}" />
-                    <label for="publicKeyHost" class="active">Public Key Host</label>
-                </div>
-                <div class="input-field col s12 m6">
-                    <input type="text" id="publicKeyGuest" class="validate" name="publicKeyGuest" />
-                    <label for="publicKeyGuest">Public Key to Certify</label>
-                </div>
+              {{> publicKeyInput}}
             </div>
             <div class="row">
               <div class="input-field col s12 m6">
@@ -35,41 +28,29 @@
               </div>
             </div>
             <div class="row">
-              <div hidden class="input-field col s12 m6 date-wrapper">
-                  <input type="date" class="datepicker">
-                  <label>From</label>
-              </div>
-              <div hidden class="input-field col s12 m6 date-wrapper">
-                  <input type="date" class="datepicker">
-                  <label>To</label>
-              </div>
+              {{> dateInput}}
             </div>
 
             <div class="row">
-              <div hidden class="input-field col s12 description-wrapper">
-                <textarea name="description" class="materialize-textarea" id="description"></textarea>
-                <label for="description">Detailed Description</label>
-              </div>
+              {{> descriptionInput}}
             </div>
 
-            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-              <a class="btn-floating btn-large">
-                <i class="material-icons">add</i>
-              </a>
-              <ul>
-                <li>
-                  <a class="btn-floating date-btn add"><i class="material-icons" id="date-icon">date_range</i></a>
-                </li>
-                <li>
-                  <a class="btn-floating description-btn add"><i class="material-icons" id="desc-icon">insert_comment</i></a>
-                </li>
-              </ul>
-            </div>
+            {{> floatingButtonCreateCertificate}}
         </form>
     </div>
   </div>
 </template>
 
+<template name="publicKeyInput">
+  <div class="input-field col s12 m6">
+      <input disabled type="text" id="publicKeyHost" class="validate" name="publicKeyHost" value="{{publicKeyHost}}" />
+      <label for="publicKeyHost" class="active">Public Key Host</label>
+  </div>
+  <div class="input-field col s12 m6">
+      <input type="text" id="publicKeyGuest" class="validate" name="publicKeyGuest" />
+      <label for="publicKeyGuest">Public Key to Certify</label>
+  </div>
+</template>
 
 <template name="certificateTemplate">
   <option value="{{title}}">{{title}}</option>
@@ -80,6 +61,39 @@
   <option value="{{category}}">{{category}}</option>
 </template>
 
+<template name="dateInput">
+  <div hidden class="input-field col s12 m6 date-wrapper">
+      <input type="date" class="datepicker">
+      <label>From</label>
+  </div>
+  <div hidden class="input-field col s12 m6 date-wrapper">
+      <input type="date" class="datepicker">
+      <label>To</label>
+  </div>
+</template>
+
+<template name="descriptionInput">
+  <div hidden class="input-field col s12 description-wrapper">
+    <textarea name="description" class="materialize-textarea" id="description"></textarea>
+    <label for="description">Detailed Description</label>
+  </div>
+</template>
+
+<template name="floatingButtonCreateCertificate">
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large">
+      <i class="material-icons">add</i>
+    </a>
+    <ul>
+      <li>
+        <a class="btn-floating date-btn add"><i class="material-icons" id="date-icon">date_range</i></a>
+      </li>
+      <li>
+        <a class="btn-floating description-btn add"><i class="material-icons" id="desc-icon">insert_comment</i></a>
+      </li>
+    </ul>
+  </div>
+</template>
 
 <template name="nav">
   <nav class="blue darken-2">
