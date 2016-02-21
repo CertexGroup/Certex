@@ -54,7 +54,7 @@ if (Meteor.isClient) {
       var submitted_password = event.target.individualPassword.value;
       //var submitted_photo = ;
 
-      Authorities.insert({
+      Individuals.insert({
         name: submitted_name,
         curp: submitted_CURP,
         email: submitted_email,
@@ -89,6 +89,7 @@ if (Meteor.isClient) {
         public_key_individual: submitted_pub_indiv,
         title: submitted_title,
         category: submitted_category,
+        signature: "bcf81fd1412a2136d2bef812798d2e6a394c6fe434988ed592e8f666fc5c5eaf4550f25ca71e5369dc5a987f4d8db9cbd6cd16c36268aec64b77ad2eed900efc",
         //file: ,
         from_date: submitted_from_date,
         expiry_date: submitted_to_date,
