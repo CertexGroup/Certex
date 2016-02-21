@@ -1,0 +1,36 @@
+<template name="presets">
+  {{>nav}}
+  <div class="container">
+    <h2>Create Certificate Preset</h2>
+
+    {{> presetForm}}
+
+  </div>
+
+</template>
+
+<template name="presetForm">
+  <form id="preset-form">
+    {{> presetTitleInput}}
+
+    {{#each fields}}
+      {{> fieldCheck}}
+    {{/each}}
+  </form>
+</template>
+
+<template name="presetTitleInput">
+  <div class="row">
+      <div class="input-field col s12">
+        <input type="text" id="preset_title" class="validate" name="preset_title" />
+        <label for="preset_title">Preset Title</label>
+    </div>
+  </div>
+</template>
+
+<template name="fieldCheck">
+    <p>
+      <input type="checkbox" class="filled-in" id="check-{{myName}}" />
+      <label for="check-{{myName}}">{{myName}}</label>
+    </p>
+</template>
